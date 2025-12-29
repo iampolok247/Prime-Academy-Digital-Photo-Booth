@@ -1,0 +1,313 @@
+================================================================================
+PLACEHOLDER IMAGE REQUIREMENTS
+================================================================================
+
+This document explains what placeholder images you need to replace for the
+Prime Academy Digital Photo Booth to work properly.
+
+================================================================================
+1. LOGO.PNG
+================================================================================
+
+Location: assets/img/logo.png
+
+Purpose:
+--------
+Displays the Prime Academy Bangladesh logo in the navigation bar on all pages.
+
+Requirements:
+------------
+- Format: PNG (with transparent background preferred)
+- Recommended size: 200 x 50 pixels (width x height)
+- Maximum size: 300 x 80 pixels
+- File size: Under 100KB for fast loading
+- Color: Should work on dark background (#053867)
+
+What to Include:
+---------------
+- Prime Academy Bangladesh text/logo
+- Clear and readable at small sizes
+- Professional appearance
+
+How to Create:
+-------------
+1. Open your logo file in Photoshop/Illustrator/Figma
+2. Resize to 200x50 pixels (maintain aspect ratio)
+3. Export as PNG with transparent background
+4. Save as logo.png
+5. Upload to assets/img/ folder
+
+Alternative:
+-----------
+If you don't have a logo yet, you can:
+- Leave the placeholder (logo will be hidden automatically)
+- The text "Prime Academy" will display instead
+- Or create a simple text logo using free tools like Canva
+
+
+================================================================================
+2. FRAME.PNG
+================================================================================
+
+Location: assets/img/frame.png
+
+Purpose:
+--------
+This is the MOST IMPORTANT file. It's the branded frame overlay that appears
+on top of captured photos. This makes your photos unique and branded.
+
+Requirements:
+------------
+- Format: PNG with TRANSPARENT BACKGROUND (critical!)
+- Recommended size: 1200 x 1600 pixels (3:4 portrait ratio)
+- Alternative size: 2400 x 3200 pixels (higher quality)
+- File size: Under 1MB (preferably under 500KB)
+- DPI: 72-150 for web
+- Color mode: RGB
+
+Frame Design Guidelines:
+-----------------------
+
+1. Layout Structure:
+   ┌─────────────────────────────────┐
+   │ ╔═══════════════════════════╗ │
+   │ ║  PRIME ACADEMY LOGO       ║ │ ← Top Section (200-300px)
+   │ ║  Campaign Branding        ║ │
+   │ ╚═══════════════════════════╝ │
+   │                               │
+   │                               │
+   │                               │
+   │    [Photo appears here]       │ ← Center (800-1000px)
+   │    Keep this area clear       │   TRANSPARENT!
+   │    or very subtle             │
+   │                               │
+   │                               │
+   │                               │
+   │ ╔═══════════════════════════╗ │
+   │ ║ #PrimeFutureStartsHere    ║ │ ← Bottom Section (200-300px)
+   │ ║ @Prime Academy Bangladesh ║ │
+   │ ╚═══════════════════════════╝ │
+   └─────────────────────────────────┘
+
+2. Design Elements to Include:
+   - Prime Academy Bangladesh logo
+   - Campaign tagline
+   - Hashtag: #PrimeFutureStartsHere
+   - Social media handle
+   - Decorative borders or patterns
+   - Brand colors (#053867, #253985, #F7BA23)
+
+3. Safe Zones:
+   - Keep important content 50px from edges
+   - Center area should be mostly transparent
+   - Text should be readable at mobile size
+
+4. What to AVOID:
+   - Don't cover center face area
+   - Avoid very thin lines (may not show on mobile)
+   - Don't use text smaller than 24pt
+   - Avoid excessive file size
+
+How to Create (Photoshop):
+--------------------------
+1. Create new document: 1200 x 1600px, 72 DPI, RGB
+2. Keep background transparent (do NOT add white background)
+3. Design top section:
+   - Add Prime Academy logo
+   - Add campaign text/branding
+   - Use layer styles for effects
+
+4. Design bottom section:
+   - Add hashtag in large, bold text
+   - Add social media handle
+   - Add decorative elements
+
+5. Keep center area mostly clear/transparent
+
+6. Export:
+   - File > Export > Export As
+   - Format: PNG
+   - Check "Transparency"
+   - Quality: 8-10
+   - Save as frame.png
+
+How to Create (Canva - Free):
+-----------------------------
+1. Go to Canva.com (free account)
+2. Create custom size: 1200 x 1600px
+3. Set background to transparent (requires Canva Pro)
+   - Alternative: Use light grey background, then remove in remove.bg
+4. Add elements:
+   - Upload Prime Academy logo
+   - Add text elements for hashtag
+   - Add decorative shapes/borders
+5. Leave center area open
+6. Download as PNG with transparent background
+
+How to Create (Figma - Free):
+-----------------------------
+1. Create frame: 1200 x 1600px
+2. Add rectangle for top section (1200 x 300px)
+3. Add rectangle for bottom section (1200 x 300px)
+4. Add text, logo, decorative elements
+5. Keep center transparent
+6. Select frame > Export > PNG > Export
+
+Template Sections:
+-----------------
+
+TOP SECTION (1200 x 300px):
+- Background: Gradient #053867 to #253985
+- Prime Academy logo (centered or left)
+- Text: "Digital Photo Booth 2025"
+- Decorative border/pattern
+
+BOTTOM SECTION (1200 x 300px):
+- Background: Matching gradient
+- Large text: #PrimeFutureStartsHere
+- Subtitle: @Prime Academy Bangladesh
+- Small text: "Join the campaign"
+
+Example Text Sizes:
+------------------
+- Main hashtag: 48-60pt, Bold
+- Social handle: 32-40pt, Medium
+- Small text: 24-28pt, Regular
+- Campaign tagline: 36-44pt, SemiBold
+
+
+================================================================================
+3. TESTING YOUR FRAME
+================================================================================
+
+Before uploading to the live site:
+----------------------------------
+1. View frame at actual size (1200x1600)
+2. Open on mobile device - is text readable?
+3. Test with different face positions
+4. Ensure transparency is working
+5. Check file size (should be under 1MB)
+
+How to Test:
+-----------
+1. Upload frame.png to assets/img/
+2. Go to photo-booth.php
+3. Allow camera and capture a photo
+4. Verify frame appears correctly
+5. Download and check final image
+
+
+================================================================================
+4. QUICK START WITHOUT CUSTOM GRAPHICS
+================================================================================
+
+If you need to launch QUICKLY without custom graphics:
+
+1. Logo: The site will work without a logo
+   - Text "Prime Academy" will display instead
+
+2. Frame: Create a simple text-only frame:
+   - Open Canva (free)
+   - Create 1200x1600px canvas
+   - Add solid color rectangles top and bottom
+   - Add text: "#PrimeFutureStartsHere" in large font
+   - Add: "@Prime Academy Bangladesh"
+   - Export as PNG
+   - Done in 10 minutes!
+
+
+================================================================================
+5. FREE DESIGN RESOURCES
+================================================================================
+
+Free Design Tools:
+-----------------
+- Canva.com - Easy, template-based (some features require Pro)
+- Figma.com - Professional, free for individuals
+- Photopea.com - Free Photoshop alternative in browser
+- Pixlr.com - Free online photo editor
+
+Free Stock Graphics:
+-------------------
+- Freepik.com - Decorative elements
+- Flaticon.com - Icons
+- Unsplash.com - Background patterns
+
+Remove Background:
+-----------------
+- Remove.bg - Automatic background removal
+- Canva background remover (Pro feature)
+
+Fonts (if needed):
+-----------------
+- Google Fonts (fonts.google.com)
+- Poppins is already loaded in the project
+
+
+================================================================================
+6. PROFESSIONAL DESIGNER BRIEF
+================================================================================
+
+If hiring a designer, provide them with this brief:
+
+Project: Photo booth frame overlay
+Deliverable: 1 PNG file (frame.png)
+
+Specifications:
+- Size: 1200 x 1600 pixels (portrait)
+- Format: PNG with transparent background
+- DPI: 72-150
+- Color mode: RGB
+- File size: Under 500KB
+
+Brand Guidelines:
+- Brand: Prime Academy Bangladesh
+- Font: Poppins (Bold, SemiBold, Regular)
+- Primary color: #053867
+- Secondary color: #253985
+- Accent: #F7BA23
+- Accent 2: #F3CE49
+
+Required Elements:
+1. Prime Academy Bangladesh logo (provide logo file)
+2. Hashtag: #PrimeFutureStartsHere (large, prominent)
+3. Social handle: @Prime Academy Bangladesh
+4. Decorative frame border or pattern
+5. Year/campaign identifier (optional)
+
+Layout:
+- Top section (300px): Logo and branding
+- Center (1000px): Keep transparent/minimal for photo
+- Bottom section (300px): Hashtag and social handle
+
+Style:
+- Modern, clean, educational, trustworthy
+- Youth-focused, inspiring
+- Professional but friendly
+
+Reference:
+- Include sample photos showing frame overlay
+- Explain this will be overlaid on user selfies
+
+
+================================================================================
+NEED HELP?
+================================================================================
+
+Can't create graphics?
+---------------------
+Option 1: Hire on Fiverr.com ($10-50, delivered in 24-48 hours)
+Option 2: Ask a student designer (great portfolio piece!)
+Option 3: Use Canva templates and customize
+Option 4: Launch with text-only frame first, upgrade later
+
+Technical Issues?
+----------------
+- Refer to main README.txt for troubleshooting
+- Check that file is named exactly: frame.png (lowercase)
+- Verify transparency is enabled
+- Test on local computer first
+
+================================================================================
+END OF PLACEHOLDER DOCUMENTATION
+================================================================================
