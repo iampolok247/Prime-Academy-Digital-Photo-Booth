@@ -25,8 +25,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.php">
-                <img src="assets/img/logo.png" alt="Prime Academy Bangladesh" height="40" class="me-2" onerror="this.style.display='none'">
-                <span class="fw-bold">Prime Academy</span>
+                <img src="assets/img/logo.png" alt="Prime Academy Bangladesh" height="40">
             </a>
             <a href="index.php" class="btn btn-outline-light btn-sm">
                 <i class="bi bi-arrow-left me-1"></i> Back to Home
