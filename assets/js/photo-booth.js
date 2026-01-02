@@ -547,9 +547,14 @@ async function submitLead(event) {
             if (leadForm) leadForm.style.display = 'none';
             if (leadSuccess) leadSuccess.style.display = 'block';
             
-            // Enable download button
+            // Enable download and share buttons
             if (downloadBtn) {
                 downloadBtn.disabled = false;
+            }
+            const shareBtn = document.getElementById('shareBtn');
+            if (shareBtn) {
+                shareBtn.style.display = 'block';
+                shareBtn.disabled = false;
             }
             
             showToast('Success', result.message || 'Information saved successfully!', 'success');
@@ -662,6 +667,11 @@ function checkLeadStatus() {
         if (downloadBtn) {
             downloadBtn.disabled = false;
         }
+        const shareBtn = document.getElementById('shareBtn');
+        if (shareBtn) {
+            shareBtn.style.display = 'block';
+            shareBtn.disabled = false;
+        }
     }
 }
 
@@ -709,4 +719,45 @@ function getFromLocalStorage(key) {
         return window.PrimeApp.getFromLocalStorage(key);
     }
     return null;
+}
+
+// ============================================
+// Facebook Share Functionality
+// ============================================
+
+function shareOnFacebook() {
+    // Facebook post caption
+    const caption = `📸 My future starts here with Prime Academy Bangladesh! 💙
+
+Captured via Prime Digital Photo Booth.
+
+আমার স্বপ্ন, আমার যাত্রা - Prime Academy Bangladesh এর সাথে!
+
+#PrimeFutureStartsHere @Prime Academy Bangladesh
+
+Join the campaign: ${window.location.origin}`;
+
+    // Copy caption to clipboard first
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(caption).then(() => {
+            showToast('Caption Copied!', 'Caption copied to clipboard. Please paste it when sharing on Facebook.', 'success');
+        }).catch(() => {
+            console.log('Could not copy caption automatically');
+        });
+    }
+
+    // Open Facebook share dialog
+    // Note: User will need to manually upload the downloaded image
+    const shareUrl = encodeURIComponent(window.location.origin);
+    const shareText = encodeURIComponent(caption);
+    
+    // Open Facebook in new tab with pre-filled text
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&quote=${shareText}`;
+    
+    // Show instructions
+    setTimeout(() => {
+        showToast('Share Instructions', 'Upload your downloaded photo and paste the caption!', 'info');
+    }, 1000);
+    
+    window.open(facebookUrl, '_blank', 'width=600,height=400');
 }

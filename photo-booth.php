@@ -95,12 +95,17 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <div class="d-flex gap-2">
-                                <button id="retakeBtn" class="btn btn-warning flex-fill" style="display: none;">
-                                    <i class="bi bi-arrow-counterclockwise me-1"></i> Retake
-                                </button>
-                                <button id="downloadBtn" class="btn btn-accent flex-fill" style="display: none;" disabled>
-                                    <i class="bi bi-download me-1"></i> Download Image
+                            <div class="d-grid gap-2">
+                                <div class="d-flex gap-2">
+                                    <button id="retakeBtn" class="btn btn-warning flex-fill" style="display: none;">
+                                        <i class="bi bi-arrow-counterclockwise me-1"></i> Retake
+                                    </button>
+                                    <button id="downloadBtn" class="btn btn-accent flex-fill" style="display: none;" disabled>
+                                        <i class="bi bi-download me-1"></i> Download Image
+                                    </button>
+                                </div>
+                                <button id="shareBtn" class="btn btn-primary" style="display: none;" disabled onclick="shareOnFacebook()">
+                                    <i class="bi bi-facebook me-2"></i> Share on Facebook
                                 </button>
                             </div>
                         </div>
