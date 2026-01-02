@@ -184,32 +184,50 @@ async function capturePhoto() {
         
         const ctx = canvas.getContext('2d');
         
-        // Calculate video aspect ratio and positioning
-        const videoAspect = video.videoWidth / video.videoHeight;
-        const canvasAspect = CANVAS_WIDTH / CANVAS_HEIGHT;
+        // Get video dimensions
+        const videoWidth = video.videoWidth;
+        const videoHeight = video.videoHeight;
         
-        let drawWidth, drawHeight, offsetX, offsetY;
+        console.log('Video dimensions:', videoWidth, 'x', videoHeight);
+        console.log('Canvas dimensions:', CANVAS_WIDTH, 'x', CANVAS_HEIGHT);
+        
+        // Calculate what portion of the video to crop
+        // We want to fill the entire canvas (no black bars)
+        const canvasAspect = CANVAS_WIDTH / CANVAS_HEIGHT; // 1200/1600 = 0.75 (3:4)
+        const videoAspect = videoWidth / videoHeight;
+        
+        let sourceX, sourceY, sourceWidth, sourceHeight;
         
         if (videoAspect > canvasAspect) {
-            // Video is wider - fit height
-            drawHeight = CANVAS_HEIGHT;
-            drawWidth = drawHeight * videoAspect;
-            offsetX = (CANVAS_WIDTH - drawWidth) / 2;
-            offsetY = 0;
+            // Video is wider (e.g., 16:9) - crop sides
+            // Take the center portion vertically matched to canvas aspect
+            sourceHeight = videoHeight;
+            sourceWidth = sourceHeight * canvasAspect; // Match canvas aspect ratio
+            sourceX = (videoWidth - sourceWidth) / 2; // Center horizontally
+            sourceY = 0;
         } else {
-            // Video is taller - fit width
-            drawWidth = CANVAS_WIDTH;
-            drawHeight = drawWidth / videoAspect;
-            offsetX = 0;
-            offsetY = (CANVAS_HEIGHT - drawHeight) / 2;
+            // Video is taller or same - crop top/bottom
+            // Take the center portion horizontally matched to canvas aspect
+            sourceWidth = videoWidth;
+            sourceHeight = sourceWidth / canvasAspect; // Match canvas aspect ratio
+            sourceX = 0;
+            sourceY = (videoHeight - sourceHeight) / 2; // Center vertically
         }
         
-        // Draw video frame (fill canvas, center crop)
-        ctx.fillStyle = '#000';
-        ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-        ctx.drawImage(video, offsetX, offsetY, drawWidth, drawHeight);
+        console.log('Cropping video from:', sourceX, sourceY, sourceWidth, sourceHeight);
         
-        // Load and draw frame overlay
+        // Clear canvas and draw white background
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+        
+        // Draw the cropped video portion to fill entire canvas
+        ctx.drawImage(
+            video,
+            sourceX, sourceY, sourceWidth, sourceHeight,  // Source (what to crop from video)
+            0, 0, CANVAS_WIDTH, CANVAS_HEIGHT             // Destination (fill entire canvas)
+        );
+        
+        // Load and draw frame overlay (this will be on top of the photo)
         await drawFrameOverlay(ctx);
         
         // Convert canvas to blob
@@ -262,34 +280,139 @@ async function capturePhoto() {
 }
 
 // ============================================
+// Draw Safe Area Guide
+// ============================================
+
+function drawSafeAreaGuide(ctx) {
+    // Safe area dimensions (where the photo/face will be visible)
+    const safeAreaTop = 250;        // Start below top frame section
+    const safeAreaBottom = 1350;    // End above bottom frame section
+    const safeAreaLeft = 50;        // Reduced left margin
+    const safeAreaRight = 1150;     // Increased right margin
+    
+    // Draw green guideline rectangle
+    ctx.strokeStyle = '#00FF00';  // Bright green
+    ctx.lineWidth = 6;
+    ctx.setLineDash([15, 15]); // Dashed line
+    ctx.strokeRect(safeAreaLeft, safeAreaTop, 
+                   safeAreaRight - safeAreaLeft, 
+                   safeAreaBottom - safeAreaTop);
+    ctx.setLineDash([]); // Reset to solid line
+    
+    // Add corner markers for better visibility
+    const cornerSize = 30;
+    ctx.strokeStyle = '#00FF00';
+    ctx.lineWidth = 6;
+    
+    // Top-left corner
+    ctx.beginPath();
+    ctx.moveTo(safeAreaLeft, safeAreaTop + cornerSize);
+    ctx.lineTo(safeAreaLeft, safeAreaTop);
+    ctx.lineTo(safeAreaLeft + cornerSize, safeAreaTop);
+    ctx.stroke();
+    
+    // Top-right corner
+    ctx.beginPath();
+    ctx.moveTo(safeAreaRight - cornerSize, safeAreaTop);
+    ctx.lineTo(safeAreaRight, safeAreaTop);
+    ctx.lineTo(safeAreaRight, safeAreaTop + cornerSize);
+    ctx.stroke();
+    
+    // Bottom-left corner
+    ctx.beginPath();
+    ctx.moveTo(safeAreaLeft, safeAreaBottom - cornerSize);
+    ctx.lineTo(safeAreaLeft, safeAreaBottom);
+    ctx.lineTo(safeAreaLeft + cornerSize, safeAreaBottom);
+    ctx.stroke();
+    
+    // Bottom-right corner
+    ctx.beginPath();
+    ctx.moveTo(safeAreaRight - cornerSize, safeAreaBottom);
+    ctx.lineTo(safeAreaRight, safeAreaBottom);
+    ctx.lineTo(safeAreaRight, safeAreaBottom - cornerSize);
+    ctx.stroke();
+}
+
+// ============================================
 // Draw Frame Overlay on Canvas
 // ============================================
 
 async function drawFrameOverlay(ctx) {
-    return new Promise((resolve, reject) => {
-        const frameImage = new Image();
-        
-        frameImage.onload = function() {
-            // Draw frame overlay on top
-            ctx.drawImage(frameImage, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-            resolve();
-        };
-        
-        frameImage.onerror = function() {
-            console.warn('Frame image not found. Proceeding without frame overlay.');
-            // Continue without frame if image not found
-            resolve();
-        };
-        
-        // Set frame source
-        frameImage.src = FRAME_URL;
-        
-        // Timeout fallback
-        setTimeout(() => {
-            console.warn('Frame loading timeout. Proceeding without frame.');
-            resolve();
-        }, 3000);
-    });
+    // Check if frame image exists
+    const frameExists = await checkFrameExists();
+    
+    if (frameExists) {
+        // Load and draw frame PNG
+        return new Promise((resolve, reject) => {
+            const frameImage = new Image();
+            
+            frameImage.onload = function() {
+                ctx.drawImage(frameImage, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+                resolve();
+            };
+            
+            frameImage.onerror = function() {
+                console.warn('Frame image not found. Drawing text frame instead.');
+                drawTextFrame(ctx);
+                resolve();
+            };
+            
+            frameImage.src = FRAME_URL;
+            
+            setTimeout(() => {
+                console.warn('Frame loading timeout. Drawing text frame instead.');
+                drawTextFrame(ctx);
+                resolve();
+            }, 3000);
+        });
+    } else {
+        // Draw simple text-based frame
+        drawTextFrame(ctx);
+    }
+}
+
+// Check if frame image exists
+async function checkFrameExists() {
+    try {
+        const response = await fetch(FRAME_URL, { method: 'HEAD' });
+        return response.ok;
+    } catch {
+        return false;
+    }
+}
+
+// Draw simple text-based frame overlay
+function drawTextFrame(ctx) {
+    // Top section
+    const gradient1 = ctx.createLinearGradient(0, 0, 0, 250);
+    gradient1.addColorStop(0, '#053867');
+    gradient1.addColorStop(1, '#253985');
+    ctx.fillStyle = gradient1;
+    ctx.fillRect(0, 0, CANVAS_WIDTH, 250);
+    
+    // Top text
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = 'bold 60px Poppins, Arial, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('Prime Academy Bangladesh', CANVAS_WIDTH / 2, 120);
+    ctx.font = '36px Poppins, Arial, sans-serif';
+    ctx.fillText('Digital Photo Booth 2025', CANVAS_WIDTH / 2, 180);
+    
+    // Bottom section
+    const gradient2 = ctx.createLinearGradient(0, 1350, 0, 1600);
+    gradient2.addColorStop(0, '#253985');
+    gradient2.addColorStop(1, '#053867');
+    ctx.fillStyle = gradient2;
+    ctx.fillRect(0, 1350, CANVAS_WIDTH, 250);
+    
+    // Bottom text
+    ctx.fillStyle = '#F7BA23';
+    ctx.font = 'bold 70px Poppins, Arial, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('#PrimeFutureStartsHere', CANVAS_WIDTH / 2, 1450);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = '40px Poppins, Arial, sans-serif';
+    ctx.fillText('@Prime Academy, Bangladesh', CANVAS_WIDTH / 2, 1520);
 }
 
 // ============================================

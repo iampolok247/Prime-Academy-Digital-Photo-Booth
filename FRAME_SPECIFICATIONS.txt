@@ -1,0 +1,282 @@
+================================================================================
+PRIME ACADEMY PHOTO BOOTH FRAME SPECIFICATIONS
+Complete Guide for Creating the Perfect Frame
+================================================================================
+
+CURRENT ISSUE:
+--------------
+Your current frame.png appears to be a Facebook post mockup with:
+- A photo already embedded (face visible)
+- Text overlays
+- Not a transparent overlay frame
+
+This won't work correctly because the app needs to:
+1. Capture YOUR live photo
+2. Overlay a TRANSPARENT frame on top
+3. The frame should have an EMPTY CENTER for the photo
+
+================================================================================
+EXACT FRAME SPECIFICATIONS
+================================================================================
+
+CANVAS DIMENSIONS:
+-----------------
+Width:  1200 pixels
+Height: 1600 pixels
+Ratio:  3:4 (portrait)
+
+SAFE PHOTO AREA (Where user's face will appear):
+------------------------------------------------
+Top:    250px from top    (leaves 250px for header)
+Bottom: 1350px from top   (leaves 250px for footer)
+Left:   100px from left   (leaves 100px margin)
+Right:  1100px from left  (leaves 100px margin)
+
+Safe Area Size: 1000px wide × 1100px tall
+
+VISUAL LAYOUT:
+-------------
+┌─────────────────────────────────────────────────────┐
+│                                                     │
+│  ╔═══════════════════════════════════════════════╗ │
+│  ║           TOP SECTION: 250px                  ║ │
+│  ║   • Prime Academy Logo                        ║ │
+│  ║   • Campaign Title/Text                       ║ │
+│  ║   • Decorative elements                       ║ │
+│  ╚═══════════════════════════════════════════════╝ │
+│  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐   │
+│  │                                               │   │
+│  │         SAFE AREA: 1000 × 1100px             │   │
+│  │                                               │   │
+│  │    *** KEEP THIS TRANSPARENT ***             │   │
+│  │    or very subtle/light                       │   │
+│  │                                               │   │
+│  │    User's face/photo will appear here        │   │
+│  │                                               │   │
+│  │    DO NOT PUT TEXT OR GRAPHICS HERE          │   │
+│  │                                               │   │
+│  └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘   │
+│  ╔═══════════════════════════════════════════════╗ │
+│  ║          BOTTOM SECTION: 250px                ║ │
+│  ║   • #PrimeFutureStartsHere                   ║ │
+│  ║   • @Prime Academy, Bangladesh               ║ │
+│  ║   • Decorative elements                       ║ │
+│  ╚═══════════════════════════════════════════════╝ │
+│                                                     │
+└─────────────────────────────────────────────────────┘
+
+    1200px total width
+    1600px total height
+
+================================================================================
+STEP-BY-STEP: CREATE YOUR FRAME IN PHOTOSHOP
+================================================================================
+
+1. CREATE NEW DOCUMENT:
+   - File > New
+   - Width: 1200px
+   - Height: 1600px
+   - Resolution: 72 DPI (web)
+   - Color Mode: RGB
+   - Background: TRANSPARENT (important!)
+
+2. DRAW TOP SECTION (0px to 250px):
+   - Create rectangle: 1200 × 250px at position (0, 0)
+   - Fill with gradient: #053867 to #253985
+   - Add Prime Academy logo (centered or left-aligned)
+   - Add text: "Digital Photo Booth 2025"
+   - Add decorative borders/patterns
+
+3. LEAVE CENTER AREA TRANSPARENT (250px to 1350px):
+   - DO NOT add anything here
+   - Keep completely transparent
+   - Or add very subtle border (optional, max 2px)
+   - This is where the captured photo will show
+
+4. DRAW BOTTOM SECTION (1350px to 1600px):
+   - Create rectangle: 1200 × 250px at position (0, 1350)
+   - Fill with matching gradient: #053867 to #253985
+   - Add text: "#PrimeFutureStartsHere" (48pt, bold, white)
+   - Add text: "@Prime Academy, Bangladesh" (32pt, white)
+   - Add decorative elements
+
+5. EXPORT:
+   - File > Export > Export As
+   - Format: PNG
+   - Transparency: CHECK THIS BOX ✓
+   - Quality: 8-10
+   - Save as: frame.png
+
+================================================================================
+STEP-BY-STEP: CREATE YOUR FRAME IN CANVA (FREE)
+================================================================================
+
+1. CREATE CUSTOM SIZE:
+   - Click "Create a design"
+   - Click "Custom size"
+   - Width: 1200px
+   - Height: 1600px
+   - Click "Create new design"
+
+2. SET TRANSPARENT BACKGROUND:
+   - If you have Canva Pro: Click "Background" > "Transparent"
+   - If you have Free: Skip this, use white background
+
+3. ADD TOP SECTION:
+   - Add rectangle: 1200 × 250px at top
+   - Fill color: #053867 or gradient
+   - Add text elements
+   - Upload and add your logo
+
+4. KEEP CENTER EMPTY:
+   - Position: 250px from top to 1350px from top
+   - Leave completely empty
+   - DO NOT add any elements here
+
+5. ADD BOTTOM SECTION:
+   - Add rectangle: 1200 × 250px at bottom (position 1350px)
+   - Fill color: #053867
+   - Add hashtag text (large and bold)
+   - Add social handle text
+
+6. DOWNLOAD:
+   - Click "Share" > "Download"
+   - File type: PNG
+   - If Pro: Check "Transparent background"
+   - Click "Download"
+
+================================================================================
+QUICK FIX FOR YOUR CURRENT FRAME
+================================================================================
+
+Your current frame has a photo embedded. Here's what to do:
+
+OPTION 1: Create New Frame (Recommended)
+- Follow the guides above
+- Make center area transparent
+- Only add graphics to top 250px and bottom 250px
+
+OPTION 2: Edit Current Frame in Photoshop
+- Open your current frame.png
+- Select and delete the center photo area (250px to 1350px)
+- Make that area transparent
+- Keep only the Facebook header mockup at top
+- Keep only the blue section at bottom
+- Save as PNG with transparency
+
+================================================================================
+TESTING YOUR FRAME
+================================================================================
+
+After creating the frame:
+
+1. Save as: frame.png
+2. Upload to: /Users/jrpolok/selfie-booth/assets/img/frame.png
+3. Reload the photo booth page
+4. Click "Allow Camera"
+5. You'll see a GREEN DASHED LINE showing the safe area
+6. Position your face inside the green box
+7. Click "Capture Photo"
+8. The frame will overlay correctly
+
+The green guide shows you exactly where your face will be visible!
+
+================================================================================
+COLORS TO USE
+================================================================================
+
+Prime Academy Brand Colors:
+- Primary:    #053867 (dark blue)
+- Secondary:  #253985 (medium blue)
+- Accent:     #F7BA23 (gold/yellow)
+- Accent 2:   #F3CE49 (light gold)
+- Text:       #FFFFFF (white)
+
+Suggested Gradient:
+- Top to Bottom: #053867 → #253985
+- Or solid: #053867
+
+================================================================================
+TEXT SUGGESTIONS
+================================================================================
+
+TOP SECTION (250px):
+- "Prime Academy Bangladesh" (logo)
+- "Digital Photo Booth 2025"
+- "Skills Development Campaign"
+
+BOTTOM SECTION (250px):
+- "#PrimeFutureStartsHere" (large, 48-60pt)
+- "@Prime Academy, Bangladesh" (32-40pt)
+- "Join the campaign!" (24pt, optional)
+
+Font: Poppins (Bold, SemiBold, Medium)
+
+================================================================================
+COMMON MISTAKES TO AVOID
+================================================================================
+
+❌ DON'T: Put a photo in the center area
+❌ DON'T: Add text over the safe area (250-1350px)
+❌ DON'T: Use a white/solid background (must be transparent!)
+❌ DON'T: Make the frame too detailed (keeps file size small)
+❌ DON'T: Cover the face area with graphics
+
+✓ DO: Keep center transparent
+✓ DO: Add graphics only to top and bottom 250px sections
+✓ DO: Use brand colors
+✓ DO: Test with the green guide
+✓ DO: Keep file size under 500KB
+
+================================================================================
+NEED HELP?
+================================================================================
+
+1. Can't create the frame yourself?
+   - Hire on Fiverr ($10-20, 24-hour delivery)
+   - Ask a graphic designer friend
+   - Use the simple text-only template below
+
+2. Photoshop alternative?
+   - Photopea.com (free Photoshop in browser)
+   - GIMP (free desktop app)
+   - Figma (free, professional tool)
+
+3. Still not working?
+   - Check that file is named exactly: frame.png
+   - Verify transparency is enabled
+   - Check file size (should be under 1MB)
+   - Test locally first before deploying
+
+================================================================================
+SIMPLE TEXT-ONLY TEMPLATE (10 MINUTES)
+================================================================================
+
+If you need a quick solution:
+
+1. Open Canva (free)
+2. Create 1200 × 1600px canvas
+3. Add blue rectangle at top (1200 × 250px)
+4. Add text: "Prime Academy Bangladesh"
+5. Add blue rectangle at bottom (1200 × 250px)
+6. Add text: "#PrimeFutureStartsHere"
+7. Leave middle empty
+8. Download as PNG
+9. Done!
+
+This gives you a functional frame in minutes while you work on a better design.
+
+================================================================================
+CONTACT & SUPPORT
+================================================================================
+
+File Location: /Users/jrpolok/selfie-booth/assets/img/frame.png
+Canvas Size: 1200 × 1600 pixels
+Safe Area: 1000 × 1100 pixels (centered with margins)
+Format: PNG with transparency
+
+For technical support, refer to README.txt in the project root.
+
+================================================================================
+END OF FRAME SPECIFICATIONS
+================================================================================
