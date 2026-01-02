@@ -349,7 +349,8 @@ Join the campaign: [Your Photo Booth Link Here]</textarea>
             </div>
             <hr class="my-4">
             <div class="text-center">
-                <p class="mb-0">&copy; 2025 Prime Academy Bangladesh. All rights reserved. | <a href="#" class="text-white">Privacy Policy</a> | <a href="#" class="text-white">Terms of Service</a></p>
+                <p class="mb-1">&copy; 2025 Prime Academy Bangladesh. All rights reserved. | <a href="#" class="text-white">Privacy Policy</a> | <a href="#" class="text-white">Terms of Service</a></p>
+                <p class="mb-0 small">Developed By <a href="https://www.jrpolok.com" target="_blank" class="text-accent fw-semibold" style="text-decoration: none;">J. R. Polok</a></p>
             </div>
         </div>
     </footer>

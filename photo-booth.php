@@ -209,7 +209,8 @@ Join the campaign: [Your Photo Booth Link Here]</textarea>
     <footer class="footer mt-5">
         <div class="container text-center">
             <p class="mb-2">&copy; 2025 Prime Academy Bangladesh. All rights reserved.</p>
-            <a href="index.php" class="text-white">Back to Campaign Page</a>
+            <p class="mb-2"><a href="index.php" class="text-white">Back to Campaign Page</a></p>
+            <p class="mb-0 small">Developed By <a href="https://www.jrpolok.com" target="_blank" class="text-accent fw-semibold" style="text-decoration: none;">J. R. Polok</a></p>
         </div>
     </footer>
 
