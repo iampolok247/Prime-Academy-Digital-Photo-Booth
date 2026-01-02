@@ -9,8 +9,8 @@
     
     # Force HTTPS (recommended for camera access)
     # Uncomment the following lines to force HTTPS
-    # RewriteCond %{HTTPS} off
-    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
     
     # Remove .php extension from URLs (optional)
     # RewriteCond %{REQUEST_FILENAME} !-d
