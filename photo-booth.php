@@ -130,11 +130,19 @@
                                         <label for="course" class="form-label">Course Interest <span class="text-danger">*</span></label>
                                         <select class="form-select" id="course" name="course" required>
                                             <option value="">-- Select a course --</option>
-                                            <option value="UI/UX Design">UI/UX Design</option>
-                                            <option value="Graphic Design">Graphic Design</option>
-                                            <option value="IELTS Preparation">IELTS Preparation</option>
-                                            <option value="Digital Marketing">Digital Marketing</option>
-                                            <option value="Web Development">Web Development</option>
+                                            <option value="Corporate English">Corporate English</option>
+                                            <option value="Professional 3D Animation With Freelancing">Professional 3D Animation With Freelancing</option>
+                                            <option value="UI/UX MASTERY">UI/UX MASTERY</option>
+                                            <option value="Video Editing- Bijoy Offer">Video Editing- Bijoy Offer</option>
+                                            <option value="Graphics Design-Online (Bijoy Offer)">Graphics Design-Online (Bijoy Offer)</option>
+                                            <option value="Master IELTS with Confidence">Master IELTS with Confidence</option>
+                                            <option value="Japanese Language Course">Japanese Language Course</option>
+                                            <option value="Professional Cabin Crew Course">Professional Cabin Crew Course</option>
+                                            <option value="Applied Generative AI & Agent Development">Applied Generative AI & Agent Development</option>
+                                            <option value="AI for Personal And Official Uses">AI for Personal And Official Uses</option>
+                                            <option value="Professional Video Editing with VFX">Professional Video Editing with VFX</option>
+                                            <option value="Graphics Design for Freelancing (Offline)">Graphics Design for Freelancing (Offline)</option>
+                                            <option value="Graphic Design with Freelancing Online">Graphic Design with Freelancing Online</option>
                                             <option value="Other">Other</option>
                                         </select>
                                     </div>
